@@ -1408,7 +1408,8 @@ function um_authorize($code=''){
 			'product_id' => 1392,
 			'domain' => $server,
 			'order' => $order,
-			'sn' => $sn
+			'sn' => $sn,
+			'v'	=> UM_VER
 		);
 		if(um_curl_post('http://www.zhiyanblog.com/cdn/tinection/ping_new.php',$data)){
 			$return = um_curl_post('http://www.zhiyanblog.com/cdn/tinection/ping_new.php',$data);
