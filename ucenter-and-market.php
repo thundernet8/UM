@@ -4,7 +4,7 @@
 Plugin Name: 用户中心与商城
 Plugin URI: http://www.zhiyanblog.com/wordpress-plugin-ucenter-and-market.html
 Description: 为你的网站添加前端登录/注册(包含新浪微博/QQ第三方一键登录)、用户中心(文章、收藏、评论、站内信、积分、关注/粉丝)、商城(文章嵌入式或单独模板式、订单及优惠码管理)、会员(月付/季付/年付/终身多个等级，可设置不同商品资源优惠)功能，集成用户积分+支付宝支付以及用户推广提成系统
-Version: 1.1
+Version: 1.2
 Author: Zhiyan
 Author URI: http://www.zhiyanblog.com/
 */
@@ -22,11 +22,11 @@ if ( !defined( 'UM_URI' ) ) {
 }
 /* Set plugin version */
 if ( !defined( 'UM_VER' ) ) {
-	define( 'UM_VER', '1.1' );
+	define( 'UM_VER', '1.2' );
 }
 /* Set plugin type */
 if ( !defined( 'UM_TYPE' ) ) {
-	define( 'UM_TYPE', 'release' );
+	define( 'UM_TYPE', 'sale' );
 }
 if ( !defined( 'UM' ) ) {
 	define( 'UM', 'ucenter&Market' );
