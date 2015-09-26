@@ -1380,7 +1380,7 @@ if(!function_exists('um_authorize')){
 function um_authorize($code=''){
 	date_default_timezone_set ('Asia/Shanghai');
 	$para = $code;
-	$cache = get_option('_wp_um_authorize');
+	$cache = get_option('_wp_um_authorize2');
 	if($cache){
 		$auth = json_decode($cache);
 		$now = time();
@@ -1395,9 +1395,9 @@ function um_authorize($code=''){
 	}else{
 		$order=$sn=$key=0;
 	}
-	if(empty($code))$code = '13acJfxEsTyPhY6iOuAjTBhkuD7C/7S0oOOzx4jqjusMPt3/C79zA2Q';
+	if(empty($code))$code = 'e529pjwWH9j2mVLvbPBg0jE/I+U7RoM4hHdSXUDNeI2EVQtCKBML+9z6vzIf';
 	//if(in_array($_SERVER['HTTP_HOST'],array('127.0.0.1','localhost'))) return;
-	if(!authcode('13acJfxEsTyPhY6iOuAjTBhkuD7C/7S0oOOzx4jqjusMPt3/C79zA2Q', 'DECODE', $key)){
+	if(!authcode('e529pjwWH9j2mVLvbPBg0jE/I+U7RoM4hHdSXUDNeI2EVQtCKBML+9z6vzIf', 'DECODE', $key)){
 		$server = strtolower($_SERVER['HTTP_HOST']);
 		$server_arr = explode('.', $server);
 		if(count($server_arr)==3){$server = $server_arr[1].'.'.$server_arr[2];}
