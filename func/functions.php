@@ -1421,12 +1421,12 @@ function um_authorize($code=''){
 		}
 		if($active==1){
 			$value = json_encode(array('order_id'=>$order,'sn'=>$sn,'key'=>$key,'time'=>time()));
-			update_option('_wp_um_authorize',$value);
+			update_option('_wp_um_authorize2',$value);
 			//set_transient( 'um_authorize', $value , current_time('mysql'), 3600*24*5 );
 			if(!empty($para))eval(base64_decode(authcode($code,'DECODE',$key)));else return 1;
 		}else{
 			$value = json_encode(array('order_id'=>'','sn'=>'','key'=>'','time'=>time()));
-			update_option('_wp_um_authorize',$value);
+			update_option('_wp_um_authorize2',$value);
 			return 0;
 		}
 	}else{
