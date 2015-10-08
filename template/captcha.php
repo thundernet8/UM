@@ -4,7 +4,7 @@
  * Main Functions of Ucenter & Market WordPress Plugin
  *
  * @package   Ucenter & Market
- * @version   1.1
+ * @version   1.2
  * @date      2015.6.6
  * @author    Zhiyan <chinash2010@gmail.com>
  * @site      Zhiyanblog <www.zhiyanblog.com>
@@ -15,9 +15,9 @@
 
 ?>
 <?php
-require_once(dirname(__FILE__)."/../../../../wp-load.php");
-    $um_dir = str_replace('\\', '/', UM_DIR);
-    $font = $um_dir."//static/consolas-webfont.ttf";
+require_once(dirname(__FILE__).DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."wp-load.php");
+    //$um_dir = str_replace('\\', '/', UM_DIR);
+    $font = $um_dir.DIRECTORY_SEPARATOR."static".DIRECTORY_SEPARATOR."consolas-webfont.ttf";
     class Imagecode{
         private $width ;
         private $height;
