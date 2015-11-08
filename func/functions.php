@@ -1490,7 +1490,7 @@ add_filter('show_admin_bar', '__return_false');
 function um_default_role(){
 	if(get_option('default_role')!='contributor')update_option('default_role','contributor');
 }
-add_action('admin_menu','um_default_role');
+//add_action('admin_menu','um_default_role');
 function um_allow_contributor_uploads() {
 	if ( current_user_can('contributor') && !current_user_can('upload_files') ){
 		$contributor = get_role('contributor');

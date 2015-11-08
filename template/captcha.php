@@ -16,8 +16,8 @@
 ?>
 <?php
 require_once(dirname(__FILE__).DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."wp-load.php");
-    //$um_dir = str_replace('\\', '/', UM_DIR);
-    $font = $um_dir.DIRECTORY_SEPARATOR."static".DIRECTORY_SEPARATOR."consolas-webfont.ttf";
+
+    $font = UM_DIR.DIRECTORY_SEPARATOR."static".DIRECTORY_SEPARATOR."consolas-webfont.ttf";
     class Imagecode{
         private $width ;
         private $height;
