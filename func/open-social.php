@@ -201,7 +201,7 @@ function um_open_template_redirect(){
 					$user_ID = get_current_user_id();
 					if($type==='weibo'){
 						$token = get_user_meta($user_ID , 'um_weibo_access_token', true );
-						$info = wp_remote_retrieve_body(wp_remote_get('https://api.weibo.com/oauth2/revokeoauth2?access_token='.$token));	
+						$info = um_curl_get('https://api.weibo.com/oauth2/revokeoauth2?access_token='.$token);	
 					}
 					delete_user_meta($user_ID, 'um_'.$type.'_openid');
 					delete_user_meta($user_ID, 'um_'.$type.'_access_token');
@@ -268,7 +268,7 @@ function um_open_template_redirect(){
 				'redirect_uri'=>$OPEN_QQ['CALLBACK']
 			);
 
-			$response = um_connect_check(wp_remote_retrieve_body(wp_remote_get('https://graph.qq.com/oauth2.0/token?'.http_build_query($params))));
+			$response = um_connect_check(um_curl_get('https://graph.qq.com/oauth2.0/token?'.http_build_query($params)));
 
 			 if (strpos($response, "callback") !== false){
 				$lpos = strpos($response, "(");
@@ -286,7 +286,7 @@ function um_open_template_redirect(){
 			
 			$graph_url = "https://graph.qq.com/oauth2.0/me?access_token=".$token;
 			
-			$str = um_connect_check(wp_remote_retrieve_body(wp_remote_get($graph_url)));
+			$str = um_connect_check(um_curl_get($graph_url));
 	 
 			if (strpos($str, "callback") !== false){
 				$lpos = strpos($str, "(");
@@ -302,7 +302,7 @@ function um_open_template_redirect(){
 			
 			$info_url = "https://graph.qq.com/user/get_user_info?access_token=".$token."&oauth_consumer_key=".$OPEN_QQ['APPID']."&openid=".$qq_openid;
 			
-			$info = json_decode(um_connect_check(wp_remote_retrieve_body(wp_remote_get($info_url))));
+			$info = json_decode(um_connect_check(um_curl_get($info_url)));
 			
 			if ($info->ret){
 				wp_die( "<b>error</b> " . $info->ret . " <b>msg</b> " . $info->msg.$redirect_text , $die_title );
@@ -345,13 +345,13 @@ function um_open_template_redirect(){
 
 		if( isset($_GET['code']) ){
 
-			$access = um_connect_check(wp_remote_retrieve_body(wp_remote_post('https://api.weibo.com/oauth2/access_token?',array( 'body' => array(
+			$access = um_connect_check(wp_remote_post('https://api.weibo.com/oauth2/access_token?',array( 'body' => array(
 				'grant_type'=>'authorization_code',
 				'client_id'=>$OPEN_WEIBO['KEY'],
 				'client_secret'=>$OPEN_WEIBO['SECRET'],
 				'code'=>trim($_GET['code']),
 				'redirect_uri'=>$OPEN_WEIBO['CALLBACK']
-			)))));
+			))));
 			
 			$access = json_decode($access,true);
 			
@@ -362,7 +362,7 @@ function um_open_template_redirect(){
 			$openid = $access["uid"];
 			$token = $access["access_token"];
 
-			$info = um_connect_check(wp_remote_retrieve_body(wp_remote_get('https://api.weibo.com/2/users/show.json?access_token='.$token.'&uid='.$openid)));
+			$info = um_connect_check(um_curl_get('https://api.weibo.com/2/users/show.json?access_token='.$token.'&uid='.$openid));
 
 			$info = json_decode($info,true);
 			
