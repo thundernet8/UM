@@ -438,7 +438,8 @@ function um_tracker_ajax_callback(){
 		echo 'NonceIsInvalid';
 		die();
 	}
-	if( $_POST['pid']=='' ) return;
+	do_action( 'um_tracker_ajax_callback', 0 );
+	if( $_POST['pid']=='' ) die();
 	$pid = sanitize_text_field($_POST['pid']);
 	if(!empty($pid)){
 		$views = get_post_meta($pid,'um_post_views',true)?(int)get_post_meta($pid,'um_post_views',true):0;
@@ -446,7 +447,6 @@ function um_tracker_ajax_callback(){
 		update_post_meta($pid,'um_post_views',$views);
 	}
 	echo $views;
-	//do_action( 'um_tracker_ajax_callback', $pid ); 
 	die();
 }
 add_action( 'wp_ajax_um_tracker_ajax', 'um_tracker_ajax_callback' );
